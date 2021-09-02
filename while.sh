@@ -1,0 +1,29 @@
+#!/bin/bash -x
+fulltime=1
+parttime=2
+wageperhr=10
+workingdays=20
+totalsalary=0
+totalworkinghrs=0
+
+for ((day=1;day<=20;day++))
+do
+	empcheck=$((RANDOM%3))
+case $empcheck in
+$fulltime)
+	workinghrs=8
+	;;
+$parttime)
+	workinghrs=4
+	;;
+*)
+	workinghrs=0
+	;;
+esac
+totalworkinghrs=$(( $workinghrs + $totalworkinghrs ))
+while [ $totalworkinghrs <= 50 ]
+do
+salary=$(( $wageperhr * $workinghrs ))
+totalsalary=$(( $salary + $totalsalary ))
+done
+done
